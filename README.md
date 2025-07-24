@@ -4,6 +4,8 @@
 Transform your plain text into stylish Unicode text with ease!  
 This project is a feature-rich, browser-based tool for generating fancy, cool, and copyable Unicode text in real-time. Whether you need aesthetic fonts for social media, stylish bios, or decorative messages — this tool has got you covered!
 
+Link https://harryme17.github.io/Advanced-Text-Style-Generator/
+
 
 
 ## 🚀 Features
@@ -61,16 +63,9 @@ This project is a feature-rich, browser-based tool for generating fancy, cool, a
 
 ## 📂 How to Use
 
-1.  **Clone the Repository**
+1.  **You can use from the link below**
     
-    bash
-    
-    CopyEdit
-    
-    `git clone https://github.com/yourusername/advanced-text-style-generator.git` 
-    
-2.  **Open `index.html` in Your Browser**  
-    No setup needed — everything runs in the browser!
+   https://harryme17.github.io/Advanced-Text-Style-Generator/
     
 
 ----------
