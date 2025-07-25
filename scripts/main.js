@@ -400,3 +400,60 @@ document.addEventListener('keydown', (e) => {
         copyAllStyles();
     }
 });
+
+// Add these new maps after your existing Unicode maps
+const sansSerifAllCapsMap = {
+    'a': '𝖠', 'b': '𝖡', 'c': '𝖢', 'd': '𝖣', 'e': '𝖤',
+    'f': '𝖥', 'g': '𝖦', 'h': '𝖧', 'i': '𝖨', 'j': '𝖩',
+    'k': '𝖪', 'l': '𝖫', 'm': '𝖬', 'n': '𝖭', 'o': '𝖮',
+    'p': '𝖯', 'q': '𝖰', 'r': '𝖱', 's': '𝖲', 't': '𝖳',
+    'u': '𝖴', 'v': '𝖵', 'w': '𝖶', 'x': '𝖷', 'y': '𝖸',
+    'z': '𝖹',
+    'A': '𝖠', 'B': '𝖡', 'C': '𝖢', 'D': '𝖣', 'E': '𝖤',
+    'F': '𝖥', 'G': '𝖦', 'H': '𝖧', 'I': '𝖨', 'J': '𝖩',
+    'K': '𝖪', 'L': '𝖫', 'M': '𝖬', 'N': '𝖭', 'O': '𝖮',
+    'P': '𝖯', 'Q': '𝖰', 'R': '𝖱', 'S': '𝖲', 'T': '𝖳',
+    'U': '𝖴', 'V': '𝖵', 'W': '𝖶', 'X': '𝖷', 'Y': '𝖸',
+    'Z': '𝖹'
+};
+
+const sansSerifAllCapsBoldMap = {
+    'a': '𝗔', 'b': '𝗕', 'c': '𝗖', 'd': '𝗗', 'e': '𝗘',
+    'f': '𝗙', 'g': '𝗚', 'h': '𝗛', 'i': '𝗜', 'j': '𝗝',
+    'k': '𝗞', 'l': '𝗟', 'm': '𝗠', 'n': '𝗡', 'o': '𝗢',
+    'p': '𝗣', 'q': '𝗤', 'r': '𝗥', 's': '𝗦', 't': '𝗧',
+    'u': '𝗨', 'v': '𝗩', 'w': '𝗪', 'x': '𝗫', 'y': '𝗬',
+    'z': '𝗭',
+    'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘',
+    'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝',
+    'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢',
+    'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧',
+    'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬',
+    'Z': '𝗭'
+};
+
+// Add these conversion functions
+function convertToSansSerifAllCaps(text) {
+    return [...text].map(char => sansSerifAllCapsMap[char] || char).join('');
+}
+
+function convertToSansSerifAllCapsBold(text) {
+    return [...text].map(char => sansSerifAllCapsBoldMap[char] || char).join('');
+}
+
+// Add these new styles to your styles array
+const newStyles = [
+    { 
+        name: 'Sans Serif All Caps', 
+        fn: text => convertToSansSerifAllCaps(text), 
+        category: 'modern' 
+    },
+    { 
+        name: 'Sans Serif All Caps Bold', 
+        fn: text => convertToSansSerifAllCapsBold(text), 
+        category: 'modern' 
+    }
+];
+
+// Update your styles array by adding these at the beginning of your existing styles array
+styles.unshift(...newStyles);
