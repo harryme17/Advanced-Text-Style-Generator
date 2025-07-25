@@ -45,7 +45,8 @@ const styles = [
     { name: 'Sentence Case', fn: text => convertToSentenceCase(text), category: 'formatting' },
     { name: 'UPPER CASE', fn: text => text.toUpperCase(), category: 'formatting' },
     { name: 'lower case', fn: text => text.toLowerCase(), category: 'formatting' },
-    { name: 'iNVERT cASE', fn: text => convertToInvertCase(text), category: 'fun' }
+    { name: 'iNVERT cASE', fn: text => convertToInvertCase(text), category: 'fun' },
+    { name: 'Custom Italic', fn: text => convertToCustomItalic(text), category: 'emphasis' }
 ];
 
 // Unicode mapping objects with proper fallbacks
@@ -100,6 +101,38 @@ const superscriptMap = { 'a': 'ᵃ', 'b': 'ᵇ', 'c': 'ᶜ', 'd': 'ᵈ', 'e': '�
 const subscriptMap = { 'a': 'ₐ', 'e': 'ₑ', 'h': 'ₕ', 'i': 'ᵢ', 'j': 'ⱼ', 'k': 'ₖ', 'l': 'ₗ', 'm': 'ₘ', 'n': 'ₙ', 'o': 'ₒ', 'p': 'ₚ', 'r': 'ᵣ', 's': 'ₛ', 't': 'ₜ', 'u': 'ᵤ', 'v': 'ᵥ', 'x': 'ₓ', '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉' };
 const upsideDownMap = { 'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'ʃ', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ', 'z': 'z', ' ': ' ', '.': '˙', ',': "'", '?': '¿', '!': '¡' };
 const brailleMap = { 'a': '⠁', 'b': '⠃', 'c': '⠉', 'd': '⠙', 'e': '⠑', 'f': '⠋', 'g': '⠛', 'h': '⠓', 'i': '⠊', 'j': '⠚', 'k': '⠅', 'l': '⠇', 'm': '⠍', 'n': '⠝', 'o': '⠕', 'p': '⠏', 'q': '⠟', 'r': '⠗', 's': '⠎', 't': '⠞', 'u': '⠥', 'v': '⠧', 'w': '⠺', 'x': '⠭', 'y': '⠽', 'z': '⠵', ' ': '⠀' };
+
+// Custom italic character mapping
+const italicMap = {
+    // Uppercase letters
+    'A': '𝐴', 'B': '𝐵', 'C': '𝐶', 'D': '𝐷', 'E': '𝐸',
+    'F': '𝐹', 'G': '𝐺', 'H': '𝐻', 'I': '𝐼', 'J': '𝐽',
+    'K': '𝐾', 'L': '𝐿', 'M': '𝑀', 'N': '𝑁', 'O': '𝑂',
+    'P': '𝑃', 'Q': '𝑄', 'R': '𝑅', 'S': '𝑆', 'T': '𝑇',
+    'U': '𝑈', 'V': '𝑉', 'W': '𝑊', 'X': '𝑋', 'Y': '𝑌',
+    'Z': '𝑍',
+    
+    // Lowercase letters
+    'a': '𝑎', 'b': '𝑏', 'c': '𝑐', 'd': '𝑑', 'e': '𝑒',
+    'f': '𝑓', 'g': '𝑔', 'h': 'ℎ', 'i': '𝑖', 'j': '𝑗',
+    'k': '𝑘', 'l': '𝑙', 'm': '𝑚', 'n': '𝑛', 'o': '𝑜',
+    'p': '𝑝', 'q': '𝑞', 'r': '𝑟', 's': '𝑠', 't': '𝑡',
+    'u': '𝑢', 'v': '𝑣', 'w': '𝑤', 'x': '𝑥', 'y': '𝑦',
+    'z': '𝑧'
+};
+
+function convertToCustomItalic(text) {
+    return [...text].map(char => italicMap[char] || char).join('');
+}
+
+// Add to styles array
+const customItalicStyle = {
+    name: 'Custom Italic',
+    fn: text => convertToCustomItalic(text),
+    category: 'emphasis'
+};
+
+// Update the styles array
 
 let currentFilter = '';
 let showingFavorites = false;
