@@ -1,0 +1,333 @@
+/* This file is intentionally left blank. */* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 1rem;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.input-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+input {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    max-width: 100vw;
+    font-size: 1.1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: white;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+    transform: translateY(-2px);
+}
+
+.controls,
+.editor-controls {
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-box {
+    margin: 1rem 0;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 100vw;
+    padding: 1rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: white;
+    box-sizing: border-box;
+}
+
+.output-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.style-block {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+.style-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.style-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #667eea;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.style-output {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    word-break: break-word;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.style-output:hover {
+    background-color: #f8f9ff;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 45px;
+    background: rgba(102, 126, 234, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    backdrop-filter: blur(5px);
+}
+
+.style-block:hover .copy-btn,
+.style-block:hover .fav-btn {
+    opacity: 1;
+}
+
+.copy-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.fav-btn:hover {
+    background: rgba(255, 182, 193, 0.3);
+    transform: scale(1.1);
+}
+
+.fav-btn.favorited {
+    opacity: 1 !important;
+    background: rgba(255, 105, 180, 0.2);
+    color: #ff1493;
+}
+
+.fav-btn.favorited:hover {
+    background: rgba(255, 105, 180, 0.3);
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* New Editor Styles */
+.text-editor {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    background: white;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.text-editor:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.style-selector {
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    background: white;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #888, #aaa);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        margin: 0.5rem auto;
+    }
+
+    .output-container {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    input,
+    .search-input {
+        width: 100%;
+        max-width: 100vw;
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .text-editor {
+        min-height: 100px;
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    .editor-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+
+    .btn,
+    .btn-secondary {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .style-block {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .container {
+        padding: 0.5rem;
+    }
+
+    .text-editor {
+        min-height: 70px;
+        font-size: 0.95rem;
+        padding: 0.5rem;
+    }
+
+    .style-block {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+}
